@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>For Aunty ELLA</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #1a2a6c, #b21f1f, #fdbb2d);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            color: white;
+            padding: 20px;
+            overflow-x: hidden;
+        }
+        
+        .navbar {
+            width: 100%;
+            background-color: #1e90ff; /* Göz rengi mavisi */
+            padding: 20px 0;
+            text-align: center;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+            border-radius: 10px;
+            margin-bottom: 40px;
+        }
+        
+        .navbar h1 {
+            font-size: 2.5rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            color: white;
+        }
+        
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            max-width: 900px;
+            margin: 20px auto;
+            position: relative;
+        }
+        
+        .buttons {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            margin: 40px 0;
+            flex-wrap: wrap;
+        }
+        
+        .btn {
+            padding: 18px 35px;
+            font-size: 1.3rem;
+            border: none;
+            border-radius: 50px;
+            color: white;
+            cursor: pointer;
+            transition: all 0.4s ease;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+        
+        .btn-primary {
+            background: linear-gradient(to right, #4facfe, #00f2fe);
+        }
+        
+        .btn-primary:hover {
+            background: linear-gradient(to right, #3a7bd5, #00d2ff);
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+        }
+        
+        .btn-secondary {
+            background: linear-gradient(to right, #ff758c, #ff7eb3);
+        }
+        
+        .btn-secondary:hover {
+            background: linear-gradient(to right, #ff5e62, #ff8c8c);
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+        }
+        
+        .content {
+            text-align: center;
+            margin: 30px 0;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            width: 100%;
+        }
+        
+        .content h2 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+            color: #ffdd59;
+        }
+        
+        .content p {
+            font-size: 1.2rem;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+        
+        .image-container {
+            width: 100%;
+            margin: 30px 0;
+            display: flex;
+            justify-content: center;
+        }
+        
+        .image-container img {
+            max-width: 100%;
+            border-radius: 15px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+            transition: transform 0.5s ease;
+        }
+        
+        .image-container img:hover {
+            transform: scale(1.03);
+        }
+        
+        .hidden {
+            display: none;
+        }
+        
+        .stars {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+        }
+        
+        .star {
+            position: absolute;
+            background-color: white;
+            border-radius: 50%;
+            animation: twinkle linear infinite;
+        }
+        
+        @keyframes twinkle {
+            0% { opacity: 0; }
+            50% { opacity: 1; }
+            100% { opacity: 0; }
+        }
+        
+        .footer {
+            margin-top: 40px;
+            text-align: center;
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.9rem;
+        }
+        
+        .message {
+            position: fixed;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(255, 107, 107, 0.9);
+            padding: 15px 30px;
+            border-radius: 50px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            z-index: 1000;
+            animation: fadeInOut 3s ease-in-out;
+            display: none;
+        }
+        
+        @keyframes fadeInOut {
+            0% { opacity: 0; top: 0; }
+            20% { opacity: 1; top: 20px; }
+            80% { opacity: 1; top: 20px; }
+            100% { opacity: 0; top: 0; display: none; }
+        }
+        
+        @media (max-width: 768px) {
+            .buttons {
+                flex-direction: column;
+                gap: 25px;
+            }
+            
+            .navbar h1 {
+                font-size: 2rem;
+            }
+            
+            .btn {
+                width: 100%;
+                max-width: 300px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="stars" id="stars"></div>
+    <div class="message" id="message">Oh sorry I didn't understand</div>
+    
+    <div class="navbar">  
+        <h1><i class="fas fa-moon"></i> Will You Sleep <i class="fas fa-moon"></i></h1>
+    </div>
+    
+    <div class="container">
+        <div class="content">
+            <h2>For Aunty Ella</h2>
+            <p>“It’s bedtime! Please make the right choice and get ready for a restful sleep. Good night!”</p>
+        </div>
+        
+        <div class="buttons">
+            <button id="sleepButton" class="btn btn-primary">
+                <i class="fas fa-bed"></i> I am going to sleep
+            </button>
+            <button id="awakeButton" class="btn btn-secondary">
+                <i class="fas fa-coffee"></i> I don't mind I am not going to sleep
+            </button>
+        </div>
+        
+        <div id="sleepContent" class="hidden">
+            <div class="content">
+                <h2><i class="fas fa-heart"></i> Thank You Madam! <i class="fas fa-heart"></i></h2>
+                <p>We wish you a good night! Thank you for making this wonderful choice.</p>
+            </div>
+            
+            <div class="image-container">
+                <img src="https://images.unsplash.com/photo-1563482776068-4dac10f937ca?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80" alt="Good Night Image">
+            </div>
+        </div>
+    </div>
+    
+    <div class="footer">
+        <p>© 2023 For Aunty ELLA | Made with <i class="fas fa-heart" style="color: #ff6b6b;"></i></p>
+    </div>
+
+    <script>
+        // Yıldız efekti oluşturma
+        function createStars() {
+            const starsContainer = document.getElementById('stars');
+            const starsCount = 100;
+            
+            for (let i = 0; i < starsCount; i++) {
+                const star = document.createElement('div');
+                star.classList.add('star');
+                
+                const size = Math.random() * 3;
+                star.style.width = `${size}px`;
+                star.style.height = `${size}px`;
+                
+                star.style.left = `${Math.random() * 100}%`;
+                star.style.top = `${Math.random() * 100}%`;
+                
+                star.style.animationDuration = `${Math.random() * 3 + 2}s`;
+                star.style.animationDelay = `${Math.random() * 2}s`;
+                
+                starsContainer.appendChild(star);
+            }
+        }
+        
+        // Mesaj gösterme fonksiyonu
+        function showMessage() {
+            const message = document.getElementById('message');
+            message.style.display = 'block';
+            message.style.animation = 'none';
+            void message.offsetWidth; // Trigger reflow
+            message.style.animation = 'fadeInOut 3s ease-in-out';
+            
+            setTimeout(() => {
+                message.style.display = 'none';
+            }, 3000);
+        }
+        
+        // Buton işlevselliği
+        document.getElementById('sleepButton').addEventListener('click', function() {
+            document.getElementById('sleepContent').classList.remove('hidden');
+            
+            // Butonları gizle
+            document.querySelector('.buttons').classList.add('hidden');
+            
+            // İçerik ekle
+            const container = document.querySelector('.container');
+            
+            // 2 saniye sonra bir mesaj göster
+            setTimeout(() => {
+                const newContent = document.createElement('div');
+                newContent.className = 'content';
+                newContent.innerHTML = `
+                    <h2><i class="fas fa-star"></i> Sweet Dreams! <i class="fas fa-star"></i></h2>
+                    <p>“Sleep is the best medicine for your body and mind. Have a good rest!”</p>
+                `;
+                container.appendChild(newContent);
+            }, 2000);
+        });
+        
+        document.getElementById('awakeButton').addEventListener('click', function() {
+            // Mesaj göster
+            showMessage();
+            
+            // Butonu hareket ettir
+            let button = this;
+            let container = document.querySelector('.container');
+            let maxX = container.clientWidth - button.clientWidth;
+            let maxY = container.clientHeight - button.clientHeight;
+            
+            // Rastgele pozisyon oluştur
+            let randomX = Math.floor(Math.random() * maxX);
+            let randomY = Math.floor(Math.random() * maxY);
+            
+            // Butonu mutlak pozisyona getir ve hareket ettir
+            button.style.position = 'absolute';
+            button.style.left = `${randomX}px`;
+            button.style.top = `${randomY}px`;
+        });
+        
+        // Sayfa yüklendiğinde yıldızları oluştur
+        window.onload = createStars;
+    </script>
+</body>
+</html>
